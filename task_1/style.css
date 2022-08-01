@@ -1,0 +1,131 @@
+body {
+    background-color: #81B98D;
+    margin: 0;
+}
+
+h1, p, a {
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 89px;
+}
+
+.content {
+    margin: 0 150px;
+}
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    width: 50%;
+    padding-top: 180px;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+p {
+    color: #D7EDDC;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 31px;
+}
+
+a {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-decoration: none;
+}
+
+img {
+    /* position: absolute;
+    top: 0;
+    right: 129px; */
+    width: 499px;
+}
+
+.arrow-icon {
+    display: inline-block;
+    background: url(arrow.png);
+    height: 20px;
+    width: 21px;
+    vertical-align: middle;
+}
+
+
+.cards,
+.cards-wide {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    flex-wrap: wrap;
+}
+
+.card,
+.card-wide {
+    background-color: #fff;
+    min-width: 150px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card-content {
+    margin: 0 30px 20px 20px;
+}
+
+.card-content h3 {
+    margin: 15px 0;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 25px;
+    color: #007519;
+}
+
+.card-content p {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+    color: #5F5A5A;
+}
+
+.card-content button {
+    width: 70px;
+    height: 28px;
+    background: #007519;
+    color: #fff;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    line-height: 19px;
+    border: none;
+}
+
+hr {
+    width: 80%;
+    height: 1px;
+    background-color: #fff;
+    border: none;
+}
+
+.card-wide {
+    display: flex;
+    justify-content: flex-start;
+    min-height: 180px;
+    max-width: 500px;
+}
+
+.card-wide img {
+    width: 180px;
+    object-fit: cover;
+}
