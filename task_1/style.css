@@ -1,12 +1,16 @@
 body {
     background-color: #81B98D;
     margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+button {
+    cursor: pointer;
 }
 
 h1, p, a {
     color: white;
-    font-family: 'Inter';
-    font-style: normal;
 }
 
 h1 {
@@ -16,7 +20,7 @@ h1 {
 }
 
 .content {
-    margin: 0 150px;
+    margin: 0 120px 0 150px;
 }
 
 .intro {
@@ -128,4 +132,72 @@ hr {
 .card-wide img {
     width: 180px;
     object-fit: cover;
+}
+
+.navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 60px 150px;
+    box-sizing: border-box;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 60px;
+    color: #fff;
+}
+
+.menu a {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+}
+
+.menu .active {
+    color: #00350B;
+}
+
+.right {
+    display: flex;
+    gap: 9px;
+}
+
+.right .search {
+    position: relative;
+}
+
+.search input {
+    width: 281px;
+    height: 40px;
+    border: none;
+    padding: 0 10px 0 36px;
+}
+
+.search input::placeholder {
+    font-size: 15px;
+    line-height: 18px;
+    color: #555555;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.right .sign-in {
+    font-size: 19px;
+    width: 96px;
+    height: 40px;
+    background-color: #007519;
+    color: #fff;
+    border: none;
 }
