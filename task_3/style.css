@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: 'Open Sans';
+
+}
+
+.header {
+    width: 100%;
+    height: 150px;
+
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.logo {
+    background-color: red;
+    flex-grow: 1;
+    padding-left: 250px;
+    -webkit-transform: skew(-20deg);
+    -moz-transform: skew(-20deg);
+    -o-transform: skew(-20deg);
+    margin: 0 -100px;
+}
+
+.logo a {
+    display: block;
+    -webkit-transform: skew(20deg);
+    -moz-transform: skew(20deg);
+    -o-transform: skew(20deg);
+
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    height: 100%;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #E43636;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    padding-right: 250px;
+    flex: 1;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #007BFF;
+    flex: 1;
+    gap: 30px;
+    padding-right: 250px;
+}
+
+.menu a {
+    color: #fff;
+    text-transform: uppercase;
+
+}
+
+.invite-us.button {
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #E43636;
+    width: 144px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
