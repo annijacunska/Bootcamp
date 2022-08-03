@@ -155,7 +155,7 @@ hr {
 .menu {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     /* gap: 60px; */
     color: #fff;
 }
@@ -265,6 +265,6 @@ hr {
 a.icon-explore {
     font-size: 1em;
     color: rgb(206, 50, 50);
-    background-color: #ffd61f;
+    background-color: #D7EDDC;
     line-height: normal;
 }
