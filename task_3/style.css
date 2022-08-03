@@ -20,7 +20,9 @@ body {
     -webkit-transform: skew(-20deg);
     -moz-transform: skew(-20deg);
     -o-transform: skew(-20deg);
-    margin: 0 -100px;
+    margin: 0 -30px;
+    display: flex;
+    align-items: center;
 }
 
 .logo a {

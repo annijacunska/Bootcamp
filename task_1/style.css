@@ -154,7 +154,9 @@ hr {
 
 .menu {
     display: flex;
-    gap: 60px;
+    align-items: center;
+    gap: 30px;
+    /* gap: 60px; */
     color: #fff;
 }
 
@@ -214,4 +216,55 @@ hr {
     color: #fff;
     border: none;
     text-align: center;
+}
+
+.icon {
+    height: 25px;
+    width: 25px;
+}
+
+.icon svg {
+    fill: #fff;
+    /* stroke: #fff; */
+    height: 25px;
+    width: 25px;
+}
+
+.icon:hover svg {
+    /* fill-opacity: 0.5; */
+    fill: #ffd61f;
+}
+
+.icon.home {
+    transform: rotate(90deg);
+
+}
+
+.icon.liked span {
+    display: block;
+    width: 29px;
+    height: 25px;
+    background: url(img/liked.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0) invert();
+}
+
+.icon:hover span,
+.icon:hover img {
+    filter: brightness(0) saturate(100%) invert(76%) sepia(100%) saturate(942%) hue-rotate(335deg) brightness(105%) contrast(108%);
+
+}
+
+.icon.defs svg {
+    fill: #000;
+    background-color: rgb(136, 155, 136);
+    border-radius: 20%;
+}
+
+a.icon-explore {
+    font-size: 1em;
+    color: rgb(206, 50, 50);
+    background-color: #ffd61f;
+    line-height: normal;
 }
