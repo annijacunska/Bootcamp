@@ -88,6 +88,9 @@ body {
 /* Font task */
 
 .content {
+    max-width: 1000px;
+    margin: auto;
+
     font-family: "BhuTuka Expanded";
     font-weight: 600;
     line-height: 1.5;
