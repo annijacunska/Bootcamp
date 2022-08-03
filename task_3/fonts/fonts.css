@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "Square Peg";
+    font-weight: 400;
+    font-style: normal;
+    src: url("SquarePeg/SquarePeg-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Cormorant SC";
+    font-weight: 300;
+    src: url("CormorantSC/CormorantSC-Light.ttf");
+}
+
+@font-face {
+    font-family: "Cormorant SC";
+    font-weight: 400;
+    src: url("CormorantSC/CormorantSC-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Cormorant SC";
+    font-weight: 500;
+    src: url("CormorantSC/CormorantSC-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Cormorant SC";
+    font-weight: 600;
+    src: url("CormorantSC/CormorantSC-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: "Cormorant SC";
+    font-weight: 700;
+    src: url("CormorantSC/CormorantSC-Bold.ttf");
+}
+
+@font-face {
+    font-family: "BhuTuka Expanded";
+    font-weight: 400;
+    font-style: normal;
+    src: url("BhuTuka/BhuTukaExpandedOne-Regular.ttf");
+}

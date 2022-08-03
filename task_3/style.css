@@ -1,7 +1,15 @@
+@import url("fonts/fonts.css");
+
+/* @font-face {
+    font-family: "Square Peg";
+    font-weight: 400;
+    font-style: normal;
+    src: url("fonts/SquarePeg/SquarePeg-Regular.ttf");
+} */
+
 body {
     margin: 0;
     font-family: 'Open Sans';
-
 }
 
 .header {
@@ -82,4 +90,20 @@ body {
     height: 44px;
     line-height: 44px;
     text-align: center;
+}
+
+/* Font task */
+
+.content {
+    font-family: "BhuTuka Expanded";
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+h1 {
+    font-family: "Cormorant SC";
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: "Square Peg";
 }
