@@ -87,7 +87,7 @@ body {
 
 /* Font task */
 
-.content {
+.content .first {
     max-width: 1000px;
     margin: auto;
 
@@ -96,10 +96,38 @@ body {
     line-height: 1.5;
 }
 
-h1 {
+.first h1 {
     font-family: "Cormorant SC";
 }
 
-h2, h3, h4, h5, h6 {
+.first h2, 
+.first h3, 
+.first h4, 
+.first h5, 
+.first h6 {
     font-family: "Square Peg";
+}
+
+.content .ibarra {
+    font-family: "Ibarra Real Nova";
+    max-width: 545px;
+    margin: auto;
+}
+
+.italics {
+    font-style: italic;
+}
+
+.ibarra-line {
+    border: none;
+    display: block;
+    background-color: yellow;
+    height: 2px;
+    width: 100%;
+}
+
+.ibarra-cube {
+    width: 170px;
+    height: 59px;
+    background-color: yellow;
 }
