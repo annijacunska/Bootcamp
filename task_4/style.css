@@ -1,16 +1,17 @@
 body {
-  font-family: "Helvetica Neue";
+  font-family: "Inter";
   margin: 0;
   background-color: #ffe1b9;
   height: 1500px;
 }
 
 header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100vw;
   background-color: #fff;
-
+  z-index: 1;
 }
 
 .top-nav {
@@ -20,29 +21,22 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 0 15px;
-
 }
-
-.part-left, 
-.menu,
-.part-right {
+.top-nav__left, .top-nav__menu, .top-nav__right {
   display: flex;
   align-items: center;
   gap: 8px;
   height: 100%;
 }
-
-.menu {
+.top-nav__menu {
   gap: 100px;
 }
-
-.part-left .search-container {
+.top-nav__search-container {
   position: relative;
   display: flex;
   align-items: center;
 }
-
-.search-container input {
+.top-nav__search-container input {
   width: 281px;
   height: 40px;
   border: none;
@@ -50,44 +44,78 @@ header {
   background-color: #F1F2F5;
   padding: 0 10px 0 36px;
 }
-
-.search-container input::placeholder {
+.top-nav__search-container input::-moz-placeholder {
   font-size: 15px;
   line-height: 18px;
   color: #555555;
 }
-
-.search-icon {
-  position: absolute;
-  left: 10px;
+.top-nav__search-container input:-ms-input-placeholder {
+  font-size: 15px;
+  line-height: 18px;
+  color: #555555;
 }
-
-.search-container svg {
-  fill: #66676B;
+.top-nav__search-container input::placeholder {
+  font-size: 15px;
+  line-height: 18px;
+  color: #555555;
 }
-
-.search-container input:focus {
+.top-nav__search-container input:focus {
   border: none;
   background-color: #babcc2;
 }
-
-.search-container input:focus + .search-icon svg {
+.top-nav__search-container input:focus + .search-icon svg {
   fill: #4d4d50;
 }
-
-.icon svg {
+.top-nav__search-container .search-icon {
+  position: absolute;
+  left: 10px;
+}
+.top-nav__search-container svg {
+  fill: #66676B;
+}
+.top-nav__search-btn {
+  display: none;
+}
+.top-nav__icon {
+  position: relative;
+}
+.top-nav__icon svg {
   fill: #fff;
   padding: 0;
   margin: 0;
 }
-
-.icon {
+.top-nav__profile {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 9px;
+}
+.top-nav__profile a.profile-img {
+  display: block;
+  background-color: #4d4d50;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+.top-nav__right-options {
+  display: flex;
+  gap: 8px;
+}
+.top-nav__btn {
   position: relative;
+  background-color: #E5E6EB;
+  border-radius: 50%;
+  padding: 11px;
+  display: block;
+}
+.top-nav__btn svg {
+  height: 18px;
+  width: 18px;
 }
 
 .icon-videos::before,
 .icon-groups::before,
-.btn.notifs::before {
+.top-nav__btn.notifs::before {
   content: "6";
   display: block;
   background-color: #DE3F4F;
@@ -107,105 +135,81 @@ header {
   content: "1";
 }
 
-.btn.notifs::before {
+.top-nav__btn.notifs::before {
   content: "5";
   right: -5px;
   top: -5px;
 }
 
-.profile {
-  display: flex;align-items: center;
-  gap: 5px;
-  margin: 0 9px;
+.intro__content {
+  margin: 0 285px;
+  max-width: 945px;
+  margin: auto;
 }
 
-a.profile-img {
-  display: block;
+.intro {
+  background: linear-gradient(180deg, #6F6F7A 0%, #FFFFFF 47.92%);
+}
+.intro__cover-image {
   background-color: #4d4d50;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  background: url("https://free4kwallpapers.com/uploads/wallpaper-cache/3d-triangles-dark-wallpaper-1300x0-MM-100.jpg");
+  height: 360px;
+  margin: 0 -25px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
-
-.right-options {
+.intro__profile {
   display: flex;
-  gap: 8px;
+  gap: 30px;
+  align-items: center;
 }
-
-a.btn {
-  position: relative;
-  background-color: #E5E6EB;
+.intro__profile .profile-img {
+  background: url("https://cdn5.vectorstock.com/i/thumb-large/62/59/default-avatar-photo-placeholder-profile-icon-vector-21666259.jpg");
+  background-size: cover;
   border-radius: 50%;
-  padding: 11px;
-  display: block;
+  width: 132px;
+  height: 132px;
+  position: relative;
+  top: -20px;
+}
+.intro__profile .profile-name,
+.intro__profile .profile-about {
+  margin: 5px 0;
+}
+.intro__profile .profile-about {
+  font-weight: 200;
+  color: #66676B;
 }
 
-a.btn svg {
-  height: 18px;
-  width: 18px;
-}
-
-.search-btn {
-  display: none;
-}
-
-@media screen and (max-width: 1300px){
-  .menu {
+@media screen and (max-width: 1300px) {
+  .top-nav__menu {
     gap: 30px;
   }
 }
-
-@media screen and (max-width: 950px){
-  a.btn:not(.more) {
-    display: none;
-  }
-
-  a.btn.more {
+@media screen and (max-width: 950px) {
+  .top-nav__btn.more {
     order: -1;
   }
-
-  .right-options.open {
+  .top-nav__btn:not(.more) {
+    display: none;
+  }
+  .top-nav__right-options.top-nav__right-options--open {
     flex-direction: column;
     align-self: flex-start;
     margin-top: 11px;
   }
-
-  .right-options.open a.btn {
+  .top-nav__right-options.top-nav__right-options--open a.top-nav__btn {
     display: block;
   }
 }
-
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
   .top-nav {
     flex-wrap: wrap;
   }
-
-  .menu {
-    order: 1;
-    flex-basis: 100%;
-    width: 100vw;
-    justify-content: space-around;
-    background-color: #fff;
-  }
-
-  header {
-    height: 122px;
-  }
-
-  .search-btn {
-    display: block;
-    padding: 8px;
-  }
-
-  .search-container input {
-    max-width: 95vw;
-  }
-
-  .part-left .search {
+  .top-nav__search {
     display: none;
   }
-
-  .part-left .search.active {
+  .top-nav__search--active {
     position: fixed;
     display: flex;
     align-items: center;
@@ -217,8 +221,26 @@ a.btn svg {
     background-color: rgba(51, 51, 51, 0.6);
     z-index: 1;
   }
-
-  .part-left .search-container {
+  .top-nav__search-container {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
   }
-}
+  .top-nav__search-container input {
+    max-width: 95vw;
+  }
+  .top-nav__menu {
+    order: 1;
+    flex-basis: 100%;
+    width: 100vw;
+    justify-content: space-around;
+    background-color: #fff;
+  }
+  .top-nav__search-btn {
+    display: block;
+    padding: 8px;
+  }
+  header {
+    height: 122px;
+  }
+}/*# sourceMappingURL=style.css.map */

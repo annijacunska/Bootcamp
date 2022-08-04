@@ -1,12 +1,14 @@
 <title>Task 4</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
 
 <body>
   
 
 <header>
   <div class="top-nav">
-    <div class="part-left">
+    <div class="top-nav__left">
       <a href="#" class="logo">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M16.6667 39.7778C7.22222 38.1111 0 29.8889 0 20C0 9 9 0 20 0C31 0 40 9 40 20C40 29.8889 32.7778 38.1111 23.3333 39.7778L22.2222 38.8889H17.7778L16.6667 39.7778Z" fill="url(#paint0_linear_1_34)"/>
@@ -19,8 +21,8 @@
           </defs>
         </svg>        
       </a>
-      <div class="search" onclick="this.classList.remove('active')">
-        <div class="search-container" onclick="event.stopPropagation()">
+      <div class="top-nav__search" onclick="this.classList.remove('top-nav__search--active')">
+        <div class="top-nav__search-container" onclick="event.stopPropagation()">
           <input type="search" id="search" placeholder="Search Facebook">
           <div class="search-icon">
               <svg width="16" height="16" viewBox="0 0 16 16">
@@ -29,63 +31,63 @@
           </div>
         </div>
       </div>
-      <a href="#" class="search-btn" onclick="this.previousElementSibling.classList.toggle('active')">
+      <a href="#" class="top-nav__search-btn" onclick="this.previousElementSibling.classList.toggle('top-nav__search--active')">
         <svg width="25" height="25" viewBox="0 0 16 16">
           <use xlink:href="defs.svg#icon-search"></use>
         </svg>
       </a>
     </div>
-    <div class="menu">
-      <a href="#" class="icon icon-home">
+    <div class="top-nav__menu">
+      <a href="#" class="top-nav__icon icon-home">
         <svg width="25" viewBox="0 0 25 25">
           <use xlink:href="defs.svg#icon-home"></use>
         </svg>        
       </a>
-      <a href="#" class="icon icon-videos">
+      <a href="#" class="top-nav__icon icon-videos">
         <svg width="25" viewBox="0 0 25 25">
           <use xlink:href="defs.svg#icon-videos"></use>
         </svg>        
       </a>
-      <a href="#" class="icon icon-market">
+      <a href="#" class="top-nav__icon icon-market">
         <svg width="25"viewBox="0 0 25 25">
           <use xlink:href="defs.svg#icon-market"></use>
         </svg>        
       </a>
-      <a href="#" class="icon icon-groups">
+      <a href="#" class="top-nav__icon icon-groups">
         <svg width="25" viewBox="0 0 26 26">
           <use xlink:href="defs.svg#icon-groups"></use>
         </svg>        
       </a>
-      <a href="#" class="icon icon-games">
+      <a href="#" class="top-nav__icon icon-games">
         <svg width="25" viewBox="0 0 25 25">
           <use xlink:href="defs.svg#icon-games"></use>
         </svg>        
       </a>
     </div>
-    <div class="part-right">
-      <div class="profile">
+    <div class="top-nav__right">
+      <div class="top-nav__profile">
         <a href="#" class="profile-img">
           <img src="" alt="">
         </a>
         <h3 class="profile-name">Sally</h3>
       </div>
-      <div class="right-options">
-        <a href="#" class="btn">
+      <div class="top-nav__right-options">
+        <a href="#" class="top-nav__btn">
           <svg width="15" height="15" viewBox="0 0 15 15">
             <use xlink:href="defs.svg#icon-plus"></use>
           </svg>
         </a>
-        <a href="#" class="btn">
+        <a href="#" class="top-nav__btn">
           <svg width="18" height="18" viewBox="0 0 18 18">
             <use xlink:href="defs.svg#icon-messenger"></use>
           </svg>
         </a>
-        <a href="#" class="btn notifs">
+        <a href="#" class="top-nav__btn notifs">
           <svg width="17" height="17" viewBox="0 0 16 17">
             <use xlink:href="defs.svg#icon-notifs"></use>
           </svg>
         </a>
-        <a href="#" class="btn more" onclick="this.parentElement.classList.toggle('open')">
+        <a href="#" class="top-nav__btn more" onclick="this.parentElement.classList.toggle('top-nav__right-options--open')">
           <svg width="12" height="12" viewBox="0 0 12 9">
             <use xlink:href="defs.svg#icon-more"></use>
           </svg>
@@ -95,5 +97,27 @@
   </div>
 </header>
 
+<div class="body">
+  <div class="intro">
+    <div class="intro__content">
+      <div class="intro__cover-image">
+        <!-- <img src="" alt="Cover image"> -->
+      </div>
+      <div class="intro__menu">
+        <div class="intro__profile">
+          <div class="profile-img">
+    
+          </div>
+          <div>
+            <h2 class="profile-name">Profile Name</h2>
+            <h4 class="profile-about">Industry</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
 
+</div>
 </body>

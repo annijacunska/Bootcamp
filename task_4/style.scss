@@ -1,0 +1,278 @@
+body {
+  font-family: "Inter";
+  margin: 0;
+  background-color: #ffe1b9;
+  height: 1500px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.top-nav {
+  box-sizing: border-box;
+  width: 100%;
+  height: 61px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+
+  &__left,
+  &__menu,
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+  }
+
+  &__menu {
+    gap: 100px;
+
+  }
+
+  &__search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 281px;
+      height: 40px;
+      border: none;
+      border-radius: 30px;
+      background-color: #F1F2F5;
+      padding: 0 10px 0 36px;
+
+      &::placeholder {
+        font-size: 15px;
+        line-height: 18px;
+        color: #555555;
+      }
+
+      &:focus {
+        border: none;
+        background-color: #babcc2;
+
+        + .search-icon svg {
+          fill: #4d4d50;
+        }
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+    }
+
+    svg {
+      fill: #66676B;
+    }
+  }
+
+  &__search-btn {
+    display: none;
+  }
+
+  &__icon {
+    position: relative;
+
+    svg {
+      fill: #fff;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__profile {
+    display: flex;align-items: center;
+    gap: 5px;
+    margin: 0 9px;
+
+    a.profile-img {
+      display: block;
+      background-color: #4d4d50;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  &__right-options {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn {
+    position: relative;
+    background-color: #E5E6EB;
+    border-radius: 50%;
+    padding: 11px;
+    display: block;
+
+    svg {
+      height: 18px;
+      width: 18px;
+    }
+  }
+}
+
+.icon-videos::before,
+.icon-groups::before,
+.top-nav__btn.notifs::before {
+  content: "6";
+  display: block;
+  background-color: #DE3F4F;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.icon-groups::before {
+  content: "1";
+}
+
+.top-nav__btn.notifs::before {
+  content: "5";
+  right: -5px;
+  top: -5px;
+}
+
+.intro__content {
+  margin: 0 285px;
+  max-width: 945px;
+  margin: auto;
+}
+
+.intro {
+  background: linear-gradient(180deg, #6F6F7A 0%, #FFFFFF 47.92%);;
+
+  &__cover-image {
+    background-color: #4d4d50;
+    background: url('https://free4kwallpapers.com/uploads/wallpaper-cache/3d-triangles-dark-wallpaper-1300x0-MM-100.jpg');
+    height: 360px;
+    margin: 0 -25px;  
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  &__menu {
+
+  }
+
+  &__profile {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    .profile-img {
+      background: url('https://cdn5.vectorstock.com/i/thumb-large/62/59/default-avatar-photo-placeholder-profile-icon-vector-21666259.jpg');
+      background-size: cover;
+      border-radius: 50%;
+      width: 132px;
+      height: 132px;
+      position: relative;
+      top: -20px;
+    }
+
+    .profile-name,
+    .profile-about {
+      margin: 5px 0;
+    }
+
+    .profile-about {
+      font-weight: 200;
+      color: #66676B;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1300px){
+  .top-nav__menu {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 950px){
+  .top-nav {
+    &__btn {
+      &.more {
+        order: -1;
+      }
+  
+      &:not(.more) {
+        display: none;
+      }
+    }
+
+    &__right-options.top-nav__right-options--open {
+      flex-direction: column;
+      align-self: flex-start;
+      margin-top: 11px;
+
+      a.top-nav__btn {
+        display: block;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px){
+  .top-nav {
+    flex-wrap: wrap;
+
+    &__search {
+      display: none;
+
+      &--active {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        background-color: rgba(51, 51, 51, 0.6);
+        z-index: 1;
+      }
+    }
+
+    &__search-container {
+      height: fit-content;
+
+      input {
+        max-width: 95vw;
+      }
+    }
+
+    &__menu {
+      order: 1;
+      flex-basis: 100%;
+      width: 100vw;
+      justify-content: space-around;
+      background-color: #fff;
+    }
+
+    &__search-btn {
+      display: block;
+      padding: 8px;
+    }
+  }
+
+  header {
+    height: 122px;
+  }
+}
