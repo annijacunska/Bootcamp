@@ -1,0 +1,34 @@
+.content {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  width: 545px;
+  margin: 50px auto;
+  gap: 5px;
+}
+.grid__tile {
+  background: rgb(179, 98, 32);
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  line-height: 50px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.message {
+  height: 50px;
+  font-size: 30px;
+}
+
+.reset-btn {
+  width: 100px;
+  height: 50px;
+  background: rgb(179, 98, 32);
+  font-size: 20px;
+  color: #fff;
+  border: none;
+}/*# sourceMappingURL=style.css.map */
