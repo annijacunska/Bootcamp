@@ -1,3 +1,7 @@
+import FourInARow from "./FourInARow.js";
+
+//TODO Add all to class FourInARow
+
 let board = document.querySelector('.grid');
 let tiles = board.children;
 // let tile_coords = [...Array(10)].map(e => Array(10));
@@ -8,14 +12,6 @@ let symbol = 'X';
 let gameActive = false;
 
 addCells();
-
-// for (let i = 0; i < 100; i++) {
-//   let tile = document.createElement('a');
-//   tile.setAttribute('class', 'grid__tile');
-//   tile.setAttribute('href', '#');
-//   // tile.textContent = i;
-//   board.appendChild(tile);
-// }
 
 // let x = 0;
 // // Create 2d array
@@ -35,15 +31,11 @@ addCells();
 //   if(event.target.tagName == 'DIV') return;
 
 //   let tile = event.target;
-//   // if (tile.textContent != '') return;
-
+//   if (tile.textContent != '') return;
 
 //   let index = Array.prototype.indexOf.call(tiles, tile);
 //   if (index < 90 && tiles[index + 10].textContent == '') return;
 
-//   tile.textContent = symbol;
-//   check_win(tile)
-//   symbol = (symbol == 'X') ? 'O' : 'X';
 // };
 
 reset_btn.onclick = function (event) {
@@ -69,8 +61,8 @@ function addCells() {
         if (checkWin(r, c)) {
           displayMessage('Winner is ' + symbol + '!');
         }
-        
         symbol = (symbol == 'X') ? 'O' : 'X';
+        make_move();
       }
 
     }
@@ -97,55 +89,36 @@ function getCellValue (r, c) {
 // }
 
 function checkWin(r, c) {
+  let up = -1;
+  let down = 1;
+  let right = 1;
+  let left = -1;
+  // let array = [
+  //   [[0, left], [0, right]]
+  // ]
+
   if (
-    checkLine(r, c, 0, -1, 0, 1) ||
-    checkLine(r, c, 1, 0) ||
-    checkLine(r, c, 1, 1, -1, -1) ||
-    checkLine(r, c, 1, -1, -1, 1)
+    checkLine(r, c, [0, left], [0, right]) ||
+    checkLine(r, c, [down, 0], [up, 0]) ||
+    checkLine(r, c, [down, right], [up, left]) ||
+    checkLine(r, c, [down, left], [up, right])
   ) {
     return true;
   }
 
   return false;
-
-  // let coords = get_coords(tile);
-
-  // //TO DO - finish funct 
-  // if (
-  //   tile_coords[coords[0]][coords[1] + 1] 
-
-  // ) {
-
-  // }
-
-  // console.log(index-1);
-
-  // if (
-  //   tiles[index-1].textContent == symbol &&
-  //   tiles[index-2].textContent == symbol &&
-  //   tiles[index-3].textContent == symbol
-  // ) {
-  //   console.log('Win');
-  //   return true;
-  // }
-
-  // if (
-  //   tiles[index+1].textContent == symbol &&
-  //   tiles[index+2].textContent == symbol &&
-  //   tiles[index+3].textContent == symbol
-  // ) {
-  //   console.log('Win');
-  //   return true;
-  // }
 }
 
-function checkLine(r, c, y1, x1, y2 = 0, x2 = 0) {
-  let counter = 0;
-  counter += countMatches(r, c, y1, x1);
 
-  if(y2 != 0 && x2 != 0) {
-    counter += countMatches(r, c, y2, x2);
-  }
+// js arguments[0], atkarībā no padoto argumentu skaita
+function checkLine(r, c, vector1, vector2 = null) {
+  let counter = 0;
+  counter += countMatches(r, c, vector1);
+  counter += countMatches(r, c, vector2);
+
+
+  // if(y2 != 0 && x2 != 0) {
+  // }
 
   if (counter >= 3) {
     gameActive = false;
@@ -153,11 +126,12 @@ function checkLine(r, c, y1, x1, y2 = 0, x2 = 0) {
   }
 }
 
-function countMatches(r, c, y_diff, x_diff) {
+function countMatches(r, c, vector) {
   let count_matches = 0;
   for (let i = 0; i <= 2; i++) {
-      c += x_diff;
-      r += y_diff;
+    r += vector[0];
+    c += vector[1];
+
       if (getCellValue(r, c) != symbol) {
         return count_matches;
       }
@@ -178,4 +152,34 @@ function resetGame() {
 
 function displayMessage(message) {
   messageElement.textContent = message;
+}
+
+function make_move () {
+  let min = 0;
+  let max = 9;
+  let r = 10;
+
+  let random_column = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  do {
+    r--;
+    if (r < 0) {
+      random_column = Math.floor(Math.random() * (max - min + 1)) + min;
+      r = 9;
+    }
+  } while (getCellValue(r, random_column) != '')
+
+  fillCell(r, random_column);
+}
+
+function fillCell(r, c) {
+  let id = '' + r + c;
+  id = Number(id);
+  if (!gameActive) return;
+  tiles[id].textContent = symbol;
+
+  if (checkWin(r, c)) {
+    displayMessage('Winner is ' + symbol + '!');
+  }
+  symbol = (symbol == 'X') ? 'O' : 'X';
 }
