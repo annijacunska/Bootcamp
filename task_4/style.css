@@ -152,7 +152,9 @@ header {
 }
 .intro__cover-image {
   background-color: #4d4d50;
-  background: url("https://free4kwallpapers.com/uploads/wallpaper-cache/3d-triangles-dark-wallpaper-1300x0-MM-100.jpg");
+  background: url("https://media.istockphoto.com/photos/abstract-geometric-network-polygon-globe-graphic-background-picture-id1208738316?b=1&k=20&m=1208738316&s=170667a&w=0&h=f4KWULKjL770nceDM6xi32EbfIgMtBwSp5fPxIx08wc=");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 360px;
   margin: 0 -25px;
   border-bottom-right-radius: 10px;
@@ -179,6 +181,155 @@ header {
 .intro__profile .profile-about {
   font-weight: 200;
   color: #66676B;
+}
+
+.content {
+  max-width: 945px;
+  margin: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.sidebar {
+  flex: 2;
+}
+.sidebar__info {
+  height: 800px;
+}
+
+.posts {
+  flex: 3;
+}
+.posts__create {
+  height: 200px;
+}
+.posts__post-info {
+  margin: 15px;
+  display: flex;
+  gap: 5px;
+}
+.posts__post-info img {
+  width: 40px;
+  height: 40px;
+  background-color: #4d4d50;
+  border-radius: 50%;
+}
+.posts__post-info h4, .posts__post-info p {
+  margin: 3px;
+  font-size: 16px;
+}
+.posts__post-info p {
+  color: #66676B;
+  font-size: 13px;
+}
+.posts__post-content {
+  margin: 0 15px;
+}
+.posts__post-media {
+  width: 100%;
+  height: 280px;
+  background: #555;
+}
+.posts__post-reactions {
+  margin: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #66676B;
+}
+.posts__post-reactions .reactions,
+.posts__post-reactions .comments {
+  display: flex;
+  gap: 5px;
+}
+.posts__post-actions {
+  margin: 0 15px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #CFD0D4;
+  border-bottom: 1px solid #CFD0D4;
+}
+.posts__post-comment {
+  margin: 0 15px;
+}
+.posts__post-comment .comment-filter {
+  width: 100%;
+  text-align: end;
+}
+.posts__post-comment .comment-write {
+  display: flex;
+  justify-content: space-between;
+}
+.posts__post-comment .comment-write img {
+  width: 36px;
+  height: 36px;
+  background-color: #4d4d50;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.posts__post-comment .comment-write input {
+  height: 36px;
+  width: 90%;
+  border-radius: 18px;
+  border: none;
+  background: #F1F2F5;
+  padding: 0 10px;
+}
+
+.skeleton-template .posts__post-reactions {
+  gap: 60px;
+}
+
+.skeleton {
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
+  margin-bottom: 10px;
+}
+.skeleton-text {
+  width: 100%;
+  height: 1em;
+  border-radius: 0.5em;
+}
+.skeleton-text.short {
+  width: 100px;
+  margin: 10px 0;
+}
+.skeleton-heading {
+  width: 120px;
+  height: 12px;
+  margin-bottom: 8px !important;
+}
+.skeleton-img {
+  width: 36px;
+  height: 36px;
+  background-color: #4d4d50;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+@-webkit-keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200deg, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200deg, 20%, 95%);
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200deg, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200deg, 20%, 95%);
+  }
+}
+.block {
+  border-radius: 10px;
+  background: #fff;
+  margin: 10px 0;
+  padding: 1px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 1300px) {
