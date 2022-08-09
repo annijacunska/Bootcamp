@@ -249,6 +249,9 @@ header {
   border-top: 1px solid #CFD0D4;
   border-bottom: 1px solid #CFD0D4;
 }
+.posts__post-actions .comment svg {
+  vertical-align: middle;
+}
 .posts__post-comment {
   margin: 0 15px;
 }

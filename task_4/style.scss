@@ -278,6 +278,10 @@ header {
       justify-content: space-around;
       border-top: 1px solid #CFD0D4;
       border-bottom: 1px solid #CFD0D4;
+
+      .comment svg {
+        vertical-align: middle;
+      }
     }
 
     &-comment {
