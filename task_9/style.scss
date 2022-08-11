@@ -1,0 +1,14 @@
+.weather-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+
+  .card {
+    width: 150px;
+
+    &.clone {
+      display: none;
+    }
+  }
+}

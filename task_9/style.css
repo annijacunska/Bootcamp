@@ -1,0 +1,12 @@
+.weather-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.weather-stats .card {
+  width: 150px;
+}
+.weather-stats .card.clone {
+  display: none;
+}/*# sourceMappingURL=style.css.map */
