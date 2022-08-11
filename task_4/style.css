@@ -1,7 +1,7 @@
 body {
   font-family: "Inter";
   margin: 0;
-  background-color: #ffe1b9;
+  background-color: #dddddd;
   height: 1500px;
 }
 
@@ -203,6 +203,9 @@ header {
 .posts__create {
   height: 200px;
 }
+.posts__post.template {
+  display: none;
+}
 .posts__post-info {
   margin: 15px;
   display: flex;
@@ -229,6 +232,12 @@ header {
   width: 100%;
   height: 280px;
   background: #555;
+}
+.posts__post-media img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .posts__post-reactions {
   margin: 0 15px;
@@ -279,6 +288,9 @@ header {
   padding: 0 10px;
 }
 
+.skeleton-template.temp {
+  display: none;
+}
 .skeleton-template .posts__post-reactions {
   gap: 60px;
 }

@@ -1,7 +1,7 @@
 body {
   font-family: "Inter";
   margin: 0;
-  background-color: #ffe1b9;
+  background-color: #dddddd;
   height: 1500px;
 }
 
@@ -224,6 +224,10 @@ header {
   }
 
   &__post {
+
+    &.template {
+      display: none;
+    }
     
     &-info {
       margin: 15px;
@@ -256,6 +260,12 @@ header {
       width: 100%;
       height: 280px;
       background: #555;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     &-reactions {
@@ -317,6 +327,10 @@ header {
 }
 
 .skeleton-template {
+
+  &.temp {
+    display: none;
+  }
   .posts__post-reactions {
     gap: 60px;
   }
