@@ -1,62 +1,3 @@
-let resetBtn = document.querySelector('.reset-btn');
-
-resetBtn.onclick = function() {
-  reset();
-}
-
-function reset() {
-  for (let i = 0; i < tile.length; i++) {
-    tile[i].innerHTML = '';
-    tile[i].style.backgroundColor = null;
-    count = 1;
-  }
-  messageElement.innerHTML = '';
-  moves = {
-    'X': [],
-    'O': []
-  }
-  fetch('api.php?api-name=reset-moves')
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  });
-}
-
-function check_win(moves, player) {
-  let has_won;
-  win_comb.forEach(combination => { 
-    has_won = combination.every(value => {
-      return moves.includes(value);
-    });
-
-    if(has_won) {
-      show_message(player);
-      color_Tiles(combination);
-      return true;
-    } else {
-      if(count > 9) {
-        endGame();
-      }
-    }
-  });
-}
-
-// function endGame() {
-//   let message = 'Game over';
-//   messageElement.innerHTML = message;
-// }
-
-function show_message(player) {
-  let message = 'Player ' + player + ' has won!';
-  messageElement.innerHTML = message;
-}
-
-function color_Tiles(combination) {
-  combination.forEach(win_tile => {
-    tile[win_tile].style.backgroundColor = '#542d0c';
-  })
-}
-
 let win_comb = [
   [0, 1, 2],
   [3, 4, 5],
@@ -76,12 +17,15 @@ let moves = {
 }
 let tile = document.querySelectorAll('.grid__tile');
 let messageElement = document.querySelector('.message');
+let resetBtn = document.querySelector('.reset-btn');
+let gameActive = true;
 let count = 1;
 
 getMoves();
 
 for (let i = 0; i < tile.length; i++) {
   tile[i].onclick = function() {
+    if(!gameActive) return;
     if(this.innerHTML == '') {
       let index = Array.prototype.indexOf.call(tile, this);
       player = ((count % 2) == 1) ? 'X' : 'O';
@@ -98,6 +42,10 @@ for (let i = 0; i < tile.length; i++) {
   }
 }
 
+resetBtn.onclick = function() {
+  reset();
+}
+
 function saveMove(player, id) {
   let info = {
     'id': id,
@@ -107,27 +55,79 @@ function saveMove(player, id) {
     method: 'POST',
     body: JSON.stringify(info)
   })
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  });
+  .then((response) => response.json());
 }
 
 function getMoves() {
   fetch('api.php?api-name=all-moves')
   .then((response) => response.json())
   .then((data) => {
-    // for(let move in data['x_moves']) {
-      // let index = move['move_tile_id'];
-      // console.log(move);
-      // moves['X'].push(index);
-    // }
-    // console.log(moves);
+    fillBoard(data, 'X');
+    fillBoard(data, 'O');
   });
-
-  fillBoard();
 }
 
-function fillBoard() {
+function fillBoard(data, symbol) {
+  for(let move in data[symbol]) {
+    let index = data[symbol][move]['move_tile_id'];
+    moves[symbol].push(index);
+    tile[index].innerHTML = symbol;
+    count++;
+  }
+  check_win(moves[symbol], symbol);
+}
 
+function reset() {
+  for (let i = 0; i < tile.length; i++) {
+    tile[i].innerHTML = '';
+    tile[i].style.backgroundColor = null;
+    count = 1;
+  }
+  messageElement.innerHTML = '';
+  moves = {
+    'X': [],
+    'O': []
+  }
+  fetch('api.php?api-name=reset-moves')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+  gameActive = true;
+}
+
+function check_win(moves, player) {
+  let has_won;
+  win_comb.forEach(combination => { 
+    has_won = combination.every(value => {
+      return moves.includes(value);
+    });
+
+    if(has_won) {
+      show_message(player);
+      color_Tiles(combination);
+      gameActive = false;
+      return true;
+    } else {
+      if(count > 8) {
+        endGame();
+      }
+    }
+  });
+}
+
+function show_message(player) {
+  let message = 'Player ' + player + ' has won!';
+  messageElement.innerHTML = message;
+}
+
+function color_Tiles(combination) {
+  combination.forEach(win_tile => {
+    tile[win_tile].style.backgroundColor = '#542d0c';
+  })
+}
+
+function endGame() {
+  let message = 'Game over';
+  messageElement.innerHTML = message;
 }

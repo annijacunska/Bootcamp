@@ -53,8 +53,8 @@ switch($_GET['api-name']) {
         break;
     case 'all-moves':
         $output['status'] = true;
-        $output['x_moves'] = $data['X'];
-        $output['o_moves'] = $data['O'];
+        $output['X'] = $data['X'];
+        $output['O'] = $data['O'];
         break;
     case 'reset-moves':
         $data = [
