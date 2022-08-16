@@ -79,7 +79,7 @@ function addTask(key) {
 }
 
 function removeTask(id) {
-  fetch('http://web.local/Bootcamp/task_12/api.php?api-name=delete-task', {
+  fetch('api.php?api-name=delete-task', {
     method: 'POST',
     body: JSON.stringify(id)
   })
@@ -95,7 +95,7 @@ function changeTaskStatus(id, status) {
     'id': id,
     'status': status
   }
-  fetch('http://web.local/Bootcamp/task_12/api.php?api-name=set-status', {
+  fetch('api.php?api-name=set-status', {
     method: 'POST',
     body: JSON.stringify(info)
   })
@@ -110,7 +110,7 @@ function editTask(id, text) {
     'id': id,
     'task': text
   }
-  fetch('http://web.local/Bootcamp/task_12/api.php?api-name=edit-task', {
+  fetch('api.php?api-name=edit-task', {
     method: 'POST',
     body: JSON.stringify(info)
   })
@@ -151,7 +151,7 @@ function createElement (key, value, done) {
 }
 
 function getAllTasks(callback) {
-  fetch('http://web.local/Bootcamp/task_12/api.php?api-name=all-tasks')
+  fetch('api.php?api-name=all-tasks')
   .then((response) => response.json())
   .then((data) => {
     const all_tasks = data['tasks'];

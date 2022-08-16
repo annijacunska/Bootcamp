@@ -1,0 +1,23 @@
+{
+    "next_id": 5,
+    "O": [
+        {
+            "move_count": 2,
+            "move_tile_id": 1
+        },
+        {
+            "move_count": 4,
+            "move_tile_id": 2
+        }
+    ],
+    "X": [
+        {
+            "move_count": 1,
+            "move_tile_id": 0
+        },
+        {
+            "move_count": 3,
+            "move_tile_id": 4
+        }
+    ]
+}
