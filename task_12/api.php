@@ -8,9 +8,9 @@ error_reporting(E_ALL);
 
 define('DATA_FILE_NAME', 'data.json');
 
-$data = [[
-    'next_id' => 0
-]];
+$data = [
+    'next_id' => 1
+];
 if (file_exists(DATA_FILE_NAME)) {
     $content = file_get_contents(DATA_FILE_NAME);
     $data = json_decode($content, true);
@@ -18,7 +18,7 @@ if (file_exists(DATA_FILE_NAME)) {
         $data = [];
     }
 }
-$id = 0;
+$id = 1;
 $output = ['status' => false];
 
 if (
@@ -39,16 +39,16 @@ switch($_GET['api-name']) {
             exit;
         }
 
-        $id = $data[array_key_first($data)]['next_id'];
-        $task[$id] = [
+        $id = $data['next_id'];
+        $task = [
             'id'=> $id,
             'task' => $_POST['task'],
             'done' => false
         ];
-        $data[] = $task;
-        $data[array_key_first($data)]['next_id']++;
+        $data["$id"] = $task;
+        $data['next_id']++;
 
-        $content = json_encode($data);
+        $content = json_encode($data, JSON_PRETTY_PRINT);
         file_put_contents(DATA_FILE_NAME, $content);
         $output = [
             'status' => true,
@@ -58,21 +58,60 @@ switch($_GET['api-name']) {
         break;
     case 'all-tasks':
         $output['status'] = true;
-        $output['tasks'] = array_slice($data, 1);
+        $output['tasks'] = $data;
+        break;
+    case 'set-status':
+        $json = file_get_contents('php://input');
+        $info = json_decode($json);
+        $id = $info->id;
+        $status = $info->status;
+        // $status = $info->status ? 'true' : 'false';
+
+        if(!$id) exit;
+
+        $data[$id]['done'] = $status;
+        $content = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents(DATA_FILE_NAME, $content);
+
+        $output = [
+            'status' => true,
+            'message' => 'Task status has been changed' ,
+            'id' => $id
+        ];
+        break;
+    case 'edit-task':
+        $json = file_get_contents('php://input');
+        $info = json_decode($json);
+        $id = $info->id;
+        $task = $info->task;
+
+        if(!$id) exit;
+
+        $data[$id]['task'] = $task;
+        $content = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents(DATA_FILE_NAME, $content);
+
+        $output = [
+            'status' => true,
+            'message' => 'Task has been changed' ,
+            'id' => $id
+        ];
         break;
     case 'delete-task':
         $json = file_get_contents('php://input');
         $id = json_decode($json);
 
-        if(!$id) {
-            exit;
-        }
+        if(!$id) exit;
+
+        unset($data[$id]);
+        $content = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents(DATA_FILE_NAME, $content);
+
         $output = [
             'status' => true,
             'message' => 'task has been deleted',
             'id' => $id
         ];
-        // $output['debug'] = array_search($id, $data, false);
 
     
         // if (

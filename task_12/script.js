@@ -9,7 +9,7 @@ let taskTemplate = document.querySelector('.template');
 
 displayTasks();
 
-// Add new task event listener
+// New task event listener
 addForm.onsubmit = function (event) {
   event.preventDefault();
   let data = new FormData(addForm);
@@ -20,20 +20,20 @@ addForm.onsubmit = function (event) {
   })
     .then((response) => response.json())
     .then((data) => addTask(data['id']));
-
-  taskInput.value = '';
+  this.reset();
 }
 
-//Edit task text event listener + waits 1000 ms after finished keyup event
-// document.addEventListener('input',debounce( (event) => {
-//   if(event.target && event.target.classList == 'task-editable') {
-//     let task = event.target;
-//     let taskText = task.textContent;
-//     let key = task.parentElement.dataset.id;
-//     // let done = storage.getData()[key]['done'];
-//     // storage.add(key, taskText, done);
-//   }
-// }, 1000));
+// Edit task text event listener + waits 1000 ms after finished keyup event
+document.addEventListener('input',debounce( (event) => {
+  if(event.target && event.target.classList == 'task-editable') {
+    let task = event.target;
+    let taskText = task.textContent;
+    let key = task.parentElement.dataset.id;
+    editTask(key, taskText);
+    // let done = storage.getData()[key]['done'];
+    // storage.add(key, taskText, done);
+  }
+}, 1000));
 
 function debounce(callback, wait) {
   let timeout;
@@ -50,39 +50,75 @@ document.addEventListener('click',function(e){
     removeTask(key);
   }
 
-//   if(e.target && e.target.classList == 'edit-task-btn'){
-//     let task = e.target;
-//     let taskContainer = task.closest('.task-element');
-//     let key = taskContainer.dataset.id;
-//   }
-
-  // if(e.target && e.target.classList == 'check-done'){
-  //   let task = e.target;
-  //   let key = task.parentElement.dataset.id;
-  //   let taskText = task.nextElementSibling.textContent;
-  //   // if (task.checked) {
-  //   //   storage.add(key, taskText, true);
-  //   // } else {
-  //   //   storage.add(key, taskText, false);
-  //   // }
-  // }
+  if(e.target && e.target.classList == 'check-done'){
+    let taskCheck = e.target;
+    let key = taskCheck.parentElement.dataset.id;
+    if (taskCheck.checked) {
+      changeTaskStatus(key, true)
+      taskCheck.checked = true;
+    } else {
+      changeTaskStatus(key, false)
+    }
+  }
 });
 
 function addTask(key) {
   getAllTasks(
     function (all_tasks) {
-      let lastKey = all_tasks.length - 1;
-      let newTask = createElement(all_tasks[lastKey]['id'], all_tasks[lastKey]['task'], all_tasks[lastKey]['done']);
+      let lastKey;
+      let keys = Object.keys(all_tasks);
+      let i = 1;
+      do{
+        lastKey = keys[keys.length - i];
+        i++;
+      } while (lastKey == 'next_id')
+      let newTask = createElement(lastKey, all_tasks[lastKey]['task'], all_tasks[lastKey]['done']);
       taskList.appendChild(newTask);
     }
   );
 }
 
-function removeTask(key) {
-  findTask(key);
+function removeTask(id) {
+  fetch('http://web.local/Bootcamp/task_12/api.php?api-name=delete-task', {
+    method: 'POST',
+    body: JSON.stringify(id)
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
   displayTasks();
 }
 
+function changeTaskStatus(id, status) {
+  let info = {
+    'id': id,
+    'status': status
+  }
+  fetch('http://web.local/Bootcamp/task_12/api.php?api-name=set-status', {
+    method: 'POST',
+    body: JSON.stringify(info)
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+}
+
+function editTask(id, text) {
+  let info = {
+    'id': id,
+    'task': text
+  }
+  fetch('http://web.local/Bootcamp/task_12/api.php?api-name=edit-task', {
+    method: 'POST',
+    body: JSON.stringify(info)
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+}
 
 function displayTasks() {
   const tasks = taskList.querySelectorAll('.task-element');
@@ -90,10 +126,14 @@ function displayTasks() {
     task.remove();
   });
 
+
   getAllTasks(
     function (all_tasks) {
       for (let key in all_tasks) {
-        taskList.appendChild(createElement(all_tasks[key]['id'], all_tasks[key]['task'], all_tasks[key]['done']));
+        if(key == 'next_id') {
+          continue;
+        };
+        taskList.appendChild(createElement(key, all_tasks[key]['task'], all_tasks[key]['done']));
       }
     }
   )
@@ -119,13 +159,3 @@ function getAllTasks(callback) {
   });
 }
 
-function findTask(id) {
-  fetch('http://web.local/Bootcamp/task_12/api.php?api-name=delete-task', {
-    method: 'POST',
-    body: JSON.stringify(id)
-  })
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  });
-}
