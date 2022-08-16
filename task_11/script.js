@@ -35,9 +35,6 @@ for (let i = 0; i < tile.length; i++) {
       moves[player].push(index);
       check_win(moves[player], player);
       count++;
-      if(count < 10) {
-        // make_move();
-      }
     }
   }
 }

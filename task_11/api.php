@@ -47,8 +47,8 @@ switch($_GET['api-name']) {
         file_put_contents(DATA_FILE_NAME, $content);
         $output = [
             'status' => true,
-            'message' => 'new task has been stored',
-            'id' => $id
+            'message' => 'New move has been stored',
+            'player_and_moveid' => $player . ' -> ' . $id
         ];
         break;
     case 'all-moves':
@@ -70,8 +70,7 @@ switch($_GET['api-name']) {
             'message' => 'Board has been reset'
         ];
         break;
-    default:
-        
+    default:    
 }
 
 echo json_encode($output, JSON_PRETTY_PRINT);

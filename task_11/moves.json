@@ -1,43 +1,5 @@
 {
-    "next_id": 10,
-    "O": [
-        {
-            "move_count": 2,
-            "move_tile_id": 7
-        },
-        {
-            "move_count": 4,
-            "move_tile_id": 4
-        },
-        {
-            "move_count": 6,
-            "move_tile_id": 2
-        },
-        {
-            "move_count": 8,
-            "move_tile_id": 0
-        }
-    ],
-    "X": [
-        {
-            "move_count": 1,
-            "move_tile_id": 8
-        },
-        {
-            "move_count": 3,
-            "move_tile_id": 5
-        },
-        {
-            "move_count": 5,
-            "move_tile_id": 1
-        },
-        {
-            "move_count": 7,
-            "move_tile_id": 3
-        },
-        {
-            "move_count": 9,
-            "move_tile_id": 6
-        }
-    ]
+    "next_id": 1,
+    "O": [],
+    "X": []
 }

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="style.css" />
 
 <body >
-  <form action="http://web.local/Bootcamp/task_12/api.php?api-name=new-task" method="post" id="add-form">
+  <form action="api.php?api-name=new-task" method="post" id="add-form">
     <input type="text" name="task" id="task-text"></input>
     <input type="submit" class="add-task" value="Add"></input>
   </form>
