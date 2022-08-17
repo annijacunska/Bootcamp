@@ -15,6 +15,7 @@ class DbManager
         }
     }
 
+    //DONE
     public function add($entry) {
         $columns_str = '';
         $values_str = '';
@@ -30,30 +31,65 @@ class DbManager
         VALUES ($values_str)";
 
         if ($this->conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+            $last_id = $this->conn->insert_id;
+            $this->output_arr = [
+                'status' => true,
+                'id' => $last_id,
+                'message' => 'New record created successfully'
+            ];
+            return $this;
         } else {
             echo "Error: " . $sql . "<br>" . $this->conn->error;
         }
     }
 
-    public function update($id, $entry) {
-        $set_str = '';
-        foreach($entry as $key => $value) {
-            $set_str .= $key . "='" . $this->conn->real_escape_string($value) . "',";
-        }
-
-        $set_str = rtrim($set_str, ',');
-
+    public function updateTask($id, $task) {
         $sql = "UPDATE " . $this->table_name . 
-        " SET $set_str WHERE id=$id";
+        " SET task=$task WHERE id=$id";
 
         if ($this->conn->query($sql) === TRUE) {
-            echo "Record updated successfully";
+            $this->output_arr = [
+                'status' => true,
+                'message' => 'Record updated successfully'
+            ];
+            return $this;
         } else {
             echo "Error: " . $sql . "<br>" . $this->conn->error;
         }
     }
 
+    public function updateStatus($id, $status) {
+        $sql = "UPDATE " . $this->table_name . 
+        " SET status=$status WHERE id=$id";
+
+        if ($this->conn->query($sql) === TRUE) {
+            $this->output_arr = [
+                'status' => true,
+                'message' => 'Record updated successfully'
+            ];
+            return $this;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+        }
+    }
+
+    //DONE
+    public function delete($id) {
+        $sql = "DELETE FROM " . $this->table_name . 
+        " WHERE id=$id";
+
+        if ($this->conn->query($sql) === TRUE) {
+            $this->output_arr = [
+                'status' => true,
+                'message' => 'Record deleted successfully'
+            ];
+            return $this;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+        }
+    }
+
+    //DONE
     public function getAll() {
         $sql = "SELECT * FROM " . $this->table_name;
         $result = $this->conn->query($sql);
