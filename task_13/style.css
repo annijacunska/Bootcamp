@@ -1,0 +1,12 @@
+.task-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-element input:checked + p {
+  text-decoration: line-through;
+}
+
+.template {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

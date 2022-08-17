@@ -1,0 +1,13 @@
+.task-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  input:checked + p{
+    text-decoration: line-through;
+  }
+}
+
+.template {
+  display: none;
+}

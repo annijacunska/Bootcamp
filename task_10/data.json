@@ -2,27 +2,22 @@
     "next_id": 14,
     "1": {
         "id": 1,
-        "task": "task2",
+        "task": "Wake up",
         "done": false
     },
     "4": {
         "id": 4,
-        "task": "task3 mdmdmd",
+        "task": "Get groceries",
         "done": true
     },
     "10": {
         "id": 10,
-        "task": "Task 5",
+        "task": "Go to gym",
         "done": false
     },
     "12": {
         "id": 12,
-        "task": "Task and task3",
+        "task": "Take a power nap",
         "done": true
-    },
-    "13": {
-        "id": 13,
-        "task": "To do something",
-        "done": false
     }
 }

@@ -80,7 +80,7 @@ function addTask(key) {
 
 function removeTask(id) {
   fetch('api.php?api-name=delete-task', {
-    method: 'POST',
+    method: 'POST', //or 'delete' and pass id in url
     body: JSON.stringify(id)
   })
   .then((response) => response.json())
