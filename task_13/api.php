@@ -14,7 +14,11 @@ if (hasGetKey('api-name')) {
       $entry->status = 0;
       $db->add($entry)->output();
 
-      /* Best for more than one parameter passed in api link */
+      /* Best for more than one parameter passed in api link 
+        Examples for fetch link: 
+          http://web.local/Bootcamp/task_13/api.php?api-name=update&id=1&entry[task]=this+is+updated+message&entry[status]=0
+          http://web.local/Bootcamp/task_13/api.php?api-name=insert&entry[task]=this+is+a+message&entry[status]=0
+      */
       // if (isset($_REQUEST['entry']) && is_array($_REQUEST['entry'])) {
       //   $accepted_keys = ['task' => null, 'status' => null];
       //   $entry = array_intersect_key($_REQUEST['entry'], $accepted_keys);
