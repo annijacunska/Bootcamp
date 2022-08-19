@@ -5,7 +5,7 @@ if (hasGetKey('api-name')) {
   switch ($_GET['api-name']) {
     case 'create-db':
       echo "<h1>DB MANAGER</h1>";
-      createDatabase('project_management');
+      createDatabase('image_uploader');
       break;
     case 'create-table':
       echo "<h1>CREATE TABLE</h1>";
